@@ -32,8 +32,11 @@ public class getMenuandkot extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.setContentType("application/json");
-		response.getWriter().print(j.getAllJsonFromHashes());
-		System.out.println(j.getAllJsonFromHashes().toString());
+		
+		JsonAggregator json = new JsonAggregator();
+		response.getWriter().print(j.getAllJson());
+	//	response.getWriter().print(j.getAllJson().toString());
+		//System.out.println(j.getAllJson().toString());
 	}
 
 	/**
@@ -42,8 +45,7 @@ public class getMenuandkot extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.setContentType("application/json");
-		response.getWriter().print(j.getAllJsonFromHashes());
-		
+		response.getWriter().print(j.getAllJson());
 	}
 
 }

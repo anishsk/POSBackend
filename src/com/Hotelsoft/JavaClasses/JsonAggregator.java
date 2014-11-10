@@ -6,13 +6,21 @@ import org.json.JSONObject;
 
 public class JsonAggregator {
 
-	private JSONObject aggregatedJson = null;
-	private HashMap JsonMap = new HashMap();
-	private MenuItems menureturn = new MenuItems();
+
 	
-	public JSONObject getAllJsonFromHashes(){
-		JsonMap.put("department", menureturn.getMenuItems());
+	
+	public JSONObject getAllJson(){
+		//JsonMap.clear();
+		 JSONObject aggregatedJson = null;
+		 HashMap JsonMap = new HashMap();
+		 MenuItems menureturn = new MenuItems();
+		 DepartmentItems deptitm = new DepartmentItems();
+		 GroupItems groupreturn = new GroupItems();
+	//	JsonMap.put("department", deptitm.getDepartmentList());
+		JsonMap.put("groups", groupreturn.getGroupList());
+		JsonMap.put("menu", menureturn.getMenu());
 		aggregatedJson = new JSONObject(JsonMap);
+		System.out.println(aggregatedJson.toString());
 		return aggregatedJson;
 	}
 	
