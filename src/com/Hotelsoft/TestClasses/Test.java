@@ -3,7 +3,9 @@ package com.Hotelsoft.TestClasses;
 import com.Hotelsoft.JavaClasses.JsonAggregator;
 
 public class Test {
-
+	/*
+	 * Class to perform tests on the POSBackendProject
+	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
@@ -15,10 +17,7 @@ public class Test {
 		 * items.returnMenuItems();
 		 * groups.returnGroupList();
 		 */
-		for (int i = 0; i < 5; i++) {
 			JsonAggregator j = new JsonAggregator();
 			j.getAllJson();
-		}
 	}
-
 }
