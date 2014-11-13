@@ -9,7 +9,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 //import java.util.Iterator;
-
 /*
  * unused imports
  * import org.json.JSONArray;
@@ -78,11 +77,7 @@ public class GetDepartments extends ConnectionManager {
 				// groupList.add(groupNo);
 				tempDeptHold.put("deptNo", deptNo);
 				tempDeptHold.put("departmentName", deptRec);
-				copyDept = (HashMap) tempDeptHold.clone();// cloned the
-															// temDeptHold as it
-															// erases the
-															// previous entries
-															// if directly added
+				copyDept = (HashMap) tempDeptHold.clone();// cloned the temDeptHold as it erases the previous entries if directly added
 				// tempDeptHold.clear();
 				// departmentList.add(tempDeptHold);
 				// tempDeptHold.clear();
