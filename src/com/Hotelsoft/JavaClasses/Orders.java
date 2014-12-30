@@ -1,22 +1,34 @@
 package com.Hotelsoft.JavaClasses;
 
-@SuppressWarnings("unused")
-public abstract class Orders {
+import java.util.ArrayList;
+
+@SuppressWarnings({"unused","rawtypes"})
+public class Orders {
 
 	private int quantity;
 	private String spclInst;
-	private String tableNo=null;
-	private String orderType=null;
+	private int tableNo;
+	private String orderType;
+	private ArrayList orderList;  
 	
 	public Orders() {
 		quantity =0;
 		spclInst=null;
-		tableNo=null;
+		tableNo=-1;
 		orderType=null;
+		orderList = new ArrayList();
 	}
 	
-	public abstract void setOrderDetail();
+	public void setOrderDetail(int qty, String spclist, int tn, String ot, ArrayList ol){
+		quantity=qty;
+		spclInst=spclist;
+		tableNo=tn;
+		orderType=ot;
+		orderList=ol;
+	}
 	
-	public abstract void insertOrders();
+	public void insertOrders(){
+		
+	}
 	
 }
