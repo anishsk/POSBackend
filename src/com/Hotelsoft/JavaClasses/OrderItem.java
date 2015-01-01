@@ -44,11 +44,11 @@ public class OrderItem {
 		this.tableNo = tableNo;
 	}
 
-	public String getOrderType() {
+	public String getItemType() {
 		return itemType;
 	}
 
-	public void setOrderType(String orderType) {
+	public void setItemType(String orderType) {
 		this.itemType = orderType;
 	}
 

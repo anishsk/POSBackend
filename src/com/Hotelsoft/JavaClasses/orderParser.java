@@ -33,21 +33,21 @@ public class orderParser {
 	public void orderJsonParser() {
 		//String key;
 		System.out.println("inside order parser");
-		OrderItem OrderItem = null;
+		OrderItem OrderItemHolder = null;
 		ArrayList OrderList = new ArrayList();
 		try{
 			JSONArray itemArray = orderJson.getJSONArray("orderitems"); 
 			if (itemArray != null) { 
 				int len = itemArray.length();
 				for (int i=0;i<len;i++){
-					OrderItem = new OrderItem();
+					OrderItemHolder = new OrderItem();
 					JSONObject temp = (JSONObject)itemArray.get(i);
-					OrderItem.setOrderItemName(temp.getString("menuitemname"));
-					OrderItem.setOrderType(temp.getString("menuitemtype"));
-					OrderItem.setQuantity(temp.getInt("qty"));
-					OrderItem.setSpclInst(temp.getString("spclinst"));
-					OrderItem.setTableNo(orderJson.getInt("tableno"));//kept table number a part of individual orderlist item because it will be easy to insert in DB
-					OrderList.add(OrderItem);
+					OrderItemHolder.setOrderItemName(temp.getString("menuitemname"));
+					OrderItemHolder.setItemType(temp.getString("menuitemtype"));
+					OrderItemHolder.setQuantity(temp.getInt("qty"));
+					OrderItemHolder.setSpclInst(temp.getString("spclinst"));
+					OrderItemHolder.setTableNo(orderJson.getInt("tableno"));//kept table number a part of individual orderlist item because it will be easy to insert in DB
+					OrderList.add(OrderItemHolder);
 					}
 			}
 		/*Iterator<?> keys = orderJson.keys();
