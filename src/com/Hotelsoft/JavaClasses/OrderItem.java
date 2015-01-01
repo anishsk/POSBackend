@@ -9,13 +9,14 @@ public class OrderItem {
 	private String spclInst;
 	private int tableNo;
 	private String orderType;
+	private String orderItemName;
 	
 	public OrderItem() {
 		quantity =0;
 		spclInst=null;
 		tableNo=-1;
 		orderType=null;
-		orderItem = null;
+		orderItemName = null;
 	}
 	
 	public int getQuantity() {
@@ -50,15 +51,13 @@ public class OrderItem {
 		this.orderType = orderType;
 	}
 
-	public String getOrderItem() {
-		return orderItem;
+	public String getOrderItemName() {
+		return orderItemName;
 	}
 
-	public void setOrderItem(String orderItem) {
-		this.orderItem = orderItem;
+	public void setOrderItemName(String orderItem) {
+		this.orderItemName = orderItem;
 	}
-
-	private String orderItem;  
 	
 	
 	/*public void setOrderDetail(int qty, String spclist, int tn, String ot, String ol){
@@ -66,6 +65,6 @@ public class OrderItem {
 		spclInst=spclist;
 		tableNo=tn;
 		orderType=ot;
-		orderItem=ol;
+		orderItemName=ol;
 	}*/
 }
