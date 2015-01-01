@@ -5,6 +5,7 @@ import java.util.ArrayList;
 @SuppressWarnings({"unused"})
 public class OrderItem {
 
+	//keeping table no a part of OrderItem because it will become easy to insert into the DB
 	private int quantity;
 	private String spclInst;
 	private int tableNo;
