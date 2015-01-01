@@ -3,23 +3,28 @@ package com.Hotelsoft.DatabaseConnection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+//import java.util.List;
 
-import com.mysql.jdbc.ResultSet;
+
+
+
+
+//import com.mysql.jdbc.ResultSet;
+import com.mysql.jdbc.ResultSetImpl;
 import com.mysql.jdbc.Statement;
-
+@SuppressWarnings({"rawtypes","unchecked"})
 public class GetMenu extends ConnectionManager {
 	
 	
 	private Statement st = null;
-	private ResultSet rs = null;
-	private HashMap menuMap = new HashMap();
+	private ResultSetImpl rs = null;
+	
 	
 	public GetMenu(){
 		connection = super.getConnection();
 		try{
 			st = (Statement)connection.createStatement();
-			rs = (ResultSet)st.executeQuery("SELECT menuitem.menuItemId, menuitem.menuItemName, menuitem.GroupNo, menuitem.DeptNo, menuitem.posno, menuitemrate.rate, splinst.splname FROM menuitem INNER JOIN menuitemrate ON menuitemrate.menuItemId = menuitem.menuItemId INNER JOIN splinst ON splinst.menuItemId= menuitem.menuItemId");
+			rs = (ResultSetImpl)st.executeQuery("SELECT menuitem.itemTypeNo,menuitem.menuItemId, menuitem.menuItemName, menuitem.GroupNo, menuitem.DeptNo, menuitem.posno, menuitemrate.rate, splinst.splname FROM menuitem INNER JOIN menuitemrate ON menuitemrate.menuItemId = menuitem.menuItemId INNER JOIN splinst ON splinst.menuItemId= menuitem.menuItemId");
 			System.out.println("in cins");
 			
 		}
@@ -31,7 +36,7 @@ public class GetMenu extends ConnectionManager {
 	
 	public HashMap returnMenuItems()
 	{
-		String itemId, itemName = null, itemGroup, itemDeptNo , posNo, itemRate, splInstName, cmp = "tart";
+		String itemId, itemName = null, itemGroup, itemDeptNo , posNo, itemRate, splInstName, itemTypeNo, cmp = "tart";
 		HashMap menuMap = new HashMap();
 		HashMap subMenuMap = new HashMap();
 		HashMap cloneMap = new HashMap();
@@ -45,7 +50,7 @@ public class GetMenu extends ConnectionManager {
 				
 				itemName = rs.getString("menuItemName");
 				itemGroup = rs.getString("GroupNo");
-			
+				itemTypeNo = rs.getString("itemTypeNo");
 				itemDeptNo = rs.getString("DeptNo");
 				
 				posNo = rs.getString("posno");
@@ -73,13 +78,15 @@ public class GetMenu extends ConnectionManager {
 					subMenuMap.clear();
 					subMenuMap.put("itemid", itemId);
 					subMenuMap.put("itemname", itemName);
-					itemGroup = rs.getString("GroupNo");
+					//itemGroup = rs.getString("GroupNo");
 					subMenuMap.put("itemgroup", itemGroup);
-					itemDeptNo = rs.getString("DeptNo");
+					//itemGroup = rs.getString("GroupNo");
+					subMenuMap.put("itemTypeNo", itemTypeNo);
+					//itemDeptNo = rs.getString("DeptNo");
 					subMenuMap.put("itemDeptNo", itemDeptNo);
-					posNo = rs.getString("posno");
+					//posNo = rs.getString("posno");
 					subMenuMap.put("posno", posNo);
-					itemRate = rs.getString("rate");
+					//itemRate = rs.getString("rate");
 					subMenuMap.put("itemrate", itemRate);
 					splInstName = rs.getString("splname");
 					itemList.add(splInstName);
@@ -91,10 +98,7 @@ public class GetMenu extends ConnectionManager {
 					menuMap.put(itemId, subMenuMap);
 					
 				}
-				
 				cmp = itemId;
-				
-				
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
