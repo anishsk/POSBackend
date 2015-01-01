@@ -4,15 +4,18 @@ import java.util.ArrayList;
 //import java.util.HashMap;
 //import java.util.Iterator;
 
+
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import com.Hotelsoft.DatabaseConnection.InsertOrder;
 
 public class orderParser {
 	
 	private JSONObject orderJson;
 	
 	public orderParser(){
-		
+		orderJson=null;
 	}
 	
 	public orderParser(String orderString) {
@@ -30,22 +33,23 @@ public class orderParser {
 	public void orderJsonParser() {
 		//String key;
 		System.out.println("inside order parser");
-		Orders o = new Orders();
-
-
-		ArrayList ol = new ArrayList();
+		OrderItem OrderItem = null;
+		ArrayList OrderList = new ArrayList();
 		try{
-			
-		
-			JSONArray jsonArray = orderJson.getJSONArray("orderList"); 
-			if (jsonArray != null) { 
-				int len = jsonArray.length();
-				for (int i=0;i<len;i++){ 
-					ol.add(jsonArray.get(i).toString());
+			JSONArray itemArray = orderJson.getJSONArray("orderitems"); 
+			if (itemArray != null) { 
+				int len = itemArray.length();
+				for (int i=0;i<len;i++){
+					OrderItem = new OrderItem();
+					JSONObject temp = (JSONObject)itemArray.get(i);
+					OrderItem.setOrderItemName(temp.getString("menuitemname"));
+					OrderItem.setOrderType(temp.getString("menuitemtype"));
+					OrderItem.setQuantity(temp.getInt("qty"));
+					OrderItem.setSpclInst(temp.getString("spclinst"));
+					OrderItem.setTableNo(orderJson.getInt("tableno"));//kept table number a part of individual orderlist item because it will be easy to insert in DB
+					OrderList.add(OrderItem);
 					}
-			} 
-
-		o.setOrderDetail(orderJson.getInt("qty"), orderJson.getString("spclinst"), orderJson.getInt("tableno"), orderJson.getString("orderType"), ol);
+			}
 		/*Iterator<?> keys = orderJson.keys();
 		//HashMap orderMap = new HashMap();
 		//while(keys.hasNext()){
@@ -62,6 +66,8 @@ public class orderParser {
 		catch(Exception e){
 			e.printStackTrace();
 		}
+		InsertOrder OrderToInsert = new InsertOrder();
+		OrderToInsert.insertOrdersinDB(OrderList);
 	}
 
 }
