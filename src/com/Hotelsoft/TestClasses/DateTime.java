@@ -27,13 +27,19 @@ public class DateTime extends ConnectionManager {
 	    c.connection=c.getConnection();
 	    Statement st = (Statement) c.connection.createStatement();
 		ResultSetImpl rs = (ResultSetImpl) st.executeQuery("select kotno from kot where auditdate<'"+dt + "'& kottime<"+"'"+frm.print(tm)+"'");
-		while(rs.next()){
+		/*while(rs.next()){
 			
 			System.out.println(rs.getString("kotno"));
-		}
+		}*/
 		rs.afterLast();
 		rs.previous();
 		System.out.println(rs.getString("kotno"));
+		String kotno=rs.getString("kotno");
+		String [] temp = kotno.split("-");
+		int kotnumber=Integer.parseInt(temp[1]);
+		kotnumber+=1;
+		kotno=temp[0]+"-"+kotnumber;
+		System.out.println(kotno);
 		}
 		catch(Exception e){
 			e.printStackTrace();
