@@ -21,8 +21,8 @@ public class DateTime extends ConnectionManager {
 	    LocalTime tm = new LocalTime();
 	    DateTimeFormatter frm = DateTimeFormat.forPattern("HH:mm:ss");
 	    
-	    System.out.println(dt);
-	    System.out.println(frm.print(tm));
+	    System.out.println(dt + new java.sql.Date(dt.toDate().getTime()).toString());
+	    System.out.println(frm.print(tm)+new java.sql.Time(tm.toDateTimeToday().getMillis()));
 	    ConnectionManager c = new ConnectionManager();
 	    c.connection=c.getConnection();
 	    Statement st = (Statement) c.connection.createStatement();
