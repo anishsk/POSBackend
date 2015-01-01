@@ -11,16 +11,16 @@ import javax.servlet.http.HttpServletResponse;
 import com.Hotelsoft.JavaClasses.orderParser;
 
 /**
- * Servlet implementation class getOrderDetails
+ * Servlet implementation class setOrderDetails
  */
-@WebServlet("/getOrderDetails")
-public class getOrderDetails extends HttpServlet {
+@WebServlet("/setOrderDetails")
+public class setOrderDetails extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public getOrderDetails() {
+    public setOrderDetails() {
         super();
         // TODO Auto-generated constructor stub
     }
