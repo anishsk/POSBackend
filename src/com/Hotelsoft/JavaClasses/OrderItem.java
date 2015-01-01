@@ -9,14 +9,14 @@ public class OrderItem {
 	private int quantity;
 	private String spclInst;
 	private int tableNo;
-	private String orderType;
+	private String itemType;
 	private String orderItemName;
 	
 	public OrderItem() {
 		quantity =0;
 		spclInst=null;
 		tableNo=-1;
-		orderType=null;
+		itemType=null;
 		orderItemName = null;
 	}
 	
@@ -45,11 +45,11 @@ public class OrderItem {
 	}
 
 	public String getOrderType() {
-		return orderType;
+		return itemType;
 	}
 
 	public void setOrderType(String orderType) {
-		this.orderType = orderType;
+		this.itemType = orderType;
 	}
 
 	public String getOrderItemName() {
@@ -65,7 +65,7 @@ public class OrderItem {
 		quantity=qty;
 		spclInst=spclist;
 		tableNo=tn;
-		orderType=ot;
+		itemType=ot;
 		orderItemName=ol;
 	}*/
 }
