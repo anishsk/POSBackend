@@ -1,0 +1,12 @@
+1. How to install Java Runtime environment:
+	- Go to http://www.oracle.com/technetwork/java/javase/downloads/index.html
+	- Click on download button below "JRE".
+	- Click "accept the license agreement"
+	- Click on the link corresponding to Windows x86 Offline/Windows x64 depending on whether
+	  your machine is 64 bit or 32 bit.
+	- Download the file and install JRE.
+	
+2. Installing Apache Tomcat Server
+	- Go to http://tomcat.apache.org/download-80.cgi
+	- On left side click on 32-bit/64-bit Windows Service Installer
+	- 
